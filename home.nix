@@ -11,6 +11,7 @@
     jq
     bat
     nodejs
+    fzf
 
     lazygit
     zoxide
