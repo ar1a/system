@@ -5,11 +5,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{
-  inputs,
-  pkgs,
-  ...
-}:
+{ inputs, pkgs, ... }:
 
 {
   wsl.enable = true;
@@ -43,6 +39,7 @@
   programs = {
     mosh.enable = true;
     zsh.enable = true;
+    nix-ld.enable = true;
   };
 
   home-manager.useGlobalPkgs = true;
