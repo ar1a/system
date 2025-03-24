@@ -1,9 +1,11 @@
-{ pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.username = "aria";
   home.homeDirectory = "/home/aria";
 
   home.packages = with pkgs; [
-    htop btop
+    htop
+    btop
     chezmoi
     fastfetch
     jq
@@ -19,7 +21,6 @@
   programs = {
     git.enable = true;
   };
-
 
   # don't touch
   home.stateVersion = "24.11";

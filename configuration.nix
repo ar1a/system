@@ -5,19 +5,39 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ inputs, config, lib, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   wsl.enable = true;
   wsl.defaultUser = "aria";
   networking.hostName = "wsl";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
-    git wget clang ripgrep fd eza file atool zip unzip file htop rsync
+    git
+    wget
+    clang
+    ripgrep
+    fd
+    eza
+    file
+    atool
+    zip
+    unzip
+    file
+    htop
+    rsync
 
     inputs.neovim-nightly.packages.${pkgs.system}.default
-    nix-output-monitor nixfmt-rfc-style
+    nix-output-monitor
+    nixfmt-rfc-style
   ];
 
   programs = {
@@ -29,7 +49,7 @@
   home-manager.useUserPackages = true;
   home-manager.users.aria = import ./home.nix;
   users.defaultUserShell = pkgs.zsh;
-  
+
   environment.variables.EDITOR = "nvim";
 
   # This value determines the NixOS release from which the default

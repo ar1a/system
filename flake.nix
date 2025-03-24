@@ -13,20 +13,30 @@
     neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixos-wsl, lix-module, home-manager, neovim-nightly, ... }: {
-    nixosConfigurations = {
-      wsl = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          nixos-wsl.nixosModules.default
-          lix-module.nixosModules.default
-          home-manager.nixosModules.home-manager
-          ./configuration.nix
-          {
-            _module.args = { inherit inputs; };
-          }
-        ];
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixos-wsl,
+      lix-module,
+      home-manager,
+      neovim-nightly,
+      ...
+    }:
+    {
+      nixosConfigurations = {
+        wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-wsl.nixosModules.default
+            lix-module.nixosModules.default
+            home-manager.nixosModules.home-manager
+            ./configuration.nix
+            {
+              _module.args = { inherit inputs; };
+            }
+          ];
+        };
       };
     };
-  };
 }
