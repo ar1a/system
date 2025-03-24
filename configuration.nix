@@ -17,7 +17,7 @@
     git wget clang ripgrep fd eza file atool zip unzip file htop rsync
 
     inputs.neovim-nightly.packages.${pkgs.system}.default
-    nix-output-monitor
+    nix-output-monitor nixfmt-rfc-style
   ];
 
   programs = {
