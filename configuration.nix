@@ -5,7 +5,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   wsl.enable = true;
@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs; [
     git wget clang ripgrep fd eza file atool zip unzip file htop rsync
 
-    neovim
+    inputs.neovim-nightly.packages.${pkgs.system}.default
     nix-output-monitor
   ];
 
