@@ -11,6 +11,7 @@
   wsl.enable = true;
   wsl.defaultUser = "aria";
   networking.hostName = "wsl";
+  time.timeZone = "Australia/Perth";
 
   nix.settings.experimental-features = [
     "nix-command"
