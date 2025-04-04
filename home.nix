@@ -17,6 +17,8 @@
     zoxide
 
     rustup
+    lldb
+    xxd
   ];
 
   programs = {

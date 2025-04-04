@@ -36,6 +36,9 @@
     inputs.neovim-nightly.packages.${pkgs.system}.default
     nix-output-monitor
     nixfmt-rfc-style
+
+    # WSLg
+    wayland
   ];
 
   programs = {
