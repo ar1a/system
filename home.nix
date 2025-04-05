@@ -16,6 +16,8 @@
     lazygit
     zoxide
 
+    python3
+
     rustup
     lldb
     xxd
