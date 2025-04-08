@@ -8,51 +8,18 @@
 { inputs, pkgs, ... }:
 
 {
+  imports = [
+    ./common.nix
+  ];
   wsl.enable = true;
   wsl.defaultUser = "aria";
   networking.hostName = "wsl";
-  time.timeZone = "Australia/Perth";
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   environment.systemPackages = with pkgs; [
-    git
-    wget
-    clang
-    ripgrep
-    fd
-    eza
-    file
-    atool
-    zip
-    unzip
-    file
-    htop
-    rsync
-    tmux
-
-    inputs.neovim-nightly.packages.${pkgs.system}.default
-    nix-output-monitor
-    nixfmt-rfc-style
-
     # WSLg
     wayland
   ];
 
-  programs = {
-    mosh.enable = true;
-    zsh.enable = true;
-    nix-ld.enable = true;
-  };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.aria = import ./home.nix;
-  users.defaultUserShell = pkgs.zsh;
-
-  environment.variables.EDITOR = "nvim";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

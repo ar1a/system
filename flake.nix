@@ -31,7 +31,18 @@
             nixos-wsl.nixosModules.default
             lix-module.nixosModules.default
             home-manager.nixosModules.home-manager
-            ./configuration.nix
+            ./wsl.nix
+            {
+              _module.args = { inherit inputs; };
+            }
+          ];
+        };
+        iapetus = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            lix-module.nixosModules.default
+            home-manager.nixosModules.home-manager
+            ./iapetus.nix
             {
               _module.args = { inherit inputs; };
             }
