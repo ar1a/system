@@ -9,6 +9,7 @@
     fuzzel
     wl-clipboard-rs
     foot
+    libnotify # for notify-send
 
     nerd-fonts.iosevka
   ];
