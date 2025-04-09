@@ -56,6 +56,7 @@
     kitty
     wget
     chezmoi
+    acpi
 
     git
   ];
