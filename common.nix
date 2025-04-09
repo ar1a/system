@@ -37,7 +37,6 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.aria = import ./home.nix;
   users.defaultUserShell = pkgs.zsh;
 
   environment.variables.EDITOR = "nvim";

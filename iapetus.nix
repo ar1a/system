@@ -2,14 +2,20 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-	imports =
-    [ # Include the results of the hardware scan.
-      ./iapetus-hardware.nix
-      ./common.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./iapetus-hardware.nix
+    ./common.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -20,18 +26,17 @@
   networking.hostId = "dd8d51d6";
 
   networking.hostName = "iapetus"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Australia/Perth";
 
   programs.hyprland = {
-		enable = true;
-		withUWSM = true;
-		xwayland.enable = true;
-	};
-	environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Enable sound.
   # hardware.pulseaudio.enable = true;
@@ -44,15 +49,14 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim 
-	    kitty
+    neovim
+    kitty
     wget
     chezmoi
-    
+
     git
   ];
 
@@ -72,6 +76,8 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+  home-manager.users.aria = import ./home-iapetus.nix;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -98,4 +104,3 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
-

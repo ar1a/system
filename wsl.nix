@@ -19,7 +19,7 @@
     # WSLg
     wayland
   ];
-
+  home-manager.users.aria = import ./home-common.nix;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
