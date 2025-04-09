@@ -9,6 +9,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -22,6 +25,7 @@
       nixos-wsl,
       lix-module,
       home-manager,
+      nix-index-database,
       neovim-nightly,
       nixos-hardware,
       ...
@@ -34,6 +38,7 @@
             nixos-wsl.nixosModules.default
             lix-module.nixosModules.default
             home-manager.nixosModules.home-manager
+            nix-index-database.nixosModules.nix-index
             ./wsl.nix
             {
               _module.args = { inherit inputs; };
@@ -45,6 +50,7 @@
           modules = [
             lix-module.nixosModules.default
             home-manager.nixosModules.home-manager
+            nix-index-database.nixosModules.nix-index
             nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen2
             ./iapetus.nix
             {
