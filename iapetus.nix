@@ -38,9 +38,8 @@
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-
+  services.tlp.enable = false; # enabled by nixos-hardware
+  services.auto-cpufreq.enable = true;
   services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

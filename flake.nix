@@ -11,6 +11,8 @@
 
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
@@ -21,6 +23,7 @@
       lix-module,
       home-manager,
       neovim-nightly,
+      nixos-hardware,
       ...
     }:
     {
@@ -42,6 +45,7 @@
           modules = [
             lix-module.nixosModules.default
             home-manager.nixosModules.home-manager
+            nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen2
             ./iapetus.nix
             {
               _module.args = { inherit inputs; };
