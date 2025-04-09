@@ -8,4 +8,6 @@
     vivaldi
   ];
 
+  services.dunst.enable = true;
+
 }
