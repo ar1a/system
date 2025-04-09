@@ -78,6 +78,7 @@
   # networking.firewall.enable = false;
 
   home-manager.users.aria = import ./home-iapetus.nix;
+  security.sudo.wheelNeedsPassword = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
