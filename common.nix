@@ -23,6 +23,7 @@
     htop
     rsync
     tmux
+    nh
 
     inputs.neovim-nightly.packages.${pkgs.system}.default
     nix-output-monitor
