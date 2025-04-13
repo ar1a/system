@@ -12,6 +12,7 @@
     bat
     nodejs
     fzf
+    nixd
 
     lazygit
     zoxide
