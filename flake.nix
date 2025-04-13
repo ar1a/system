@@ -15,6 +15,8 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
@@ -28,6 +30,7 @@
       nix-index-database,
       neovim-nightly,
       nixos-hardware,
+      catppuccin,
       ...
     }:
     {
@@ -52,6 +55,7 @@
             home-manager.nixosModules.home-manager
             nix-index-database.nixosModules.nix-index
             nixos-hardware.nixosModules.lenovo-thinkpad-x1-extreme-gen2
+            catppuccin.nixosModules.catppuccin
             ./iapetus.nix
             {
               _module.args = { inherit inputs; };

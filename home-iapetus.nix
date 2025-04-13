@@ -1,33 +1,42 @@
-{ pkgs, ... }:
+{ pkgs, catppuccin, ... }:
 {
   imports = [
     ./home-common.nix
+    catppuccin.homeModules.catppuccin
   ];
 
   home.packages = with pkgs; [
     vivaldi
-    fuzzel
     wl-clipboard-rs
     foot
     libnotify # for notify-send
+    gcr
 
     nerd-fonts.iosevka
   ];
+
+  catppuccin.flavor = "frappe";
+  catppuccin.fuzzel.enable = true;
+  catppuccin.dunst.enable = true;
+  catppuccin.cursors.enable = true;
 
   programs.waybar = {
     enable = true;
     systemd.enable = true;
   };
-  services.dunst.enable = true;
+  programs.fuzzel.enable = true;
+  services.dunst = {
+    enable = true;
+  };
   services.network-manager-applet.enable = true;
+
+  services.gnome-keyring.enable = true;
 
   fonts.fontconfig.enable = true;
   fonts.fontconfig.defaultFonts.monospace = [ "Iosevka Nerd Font Mono" ];
 
   home.pointerCursor = {
     gtk.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
     size = 16;
   };
 

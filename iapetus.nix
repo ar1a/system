@@ -76,8 +76,12 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  home-manager.users.aria = import ./home-iapetus.nix;
+  home-manager.users.aria = import ./home-iapetus.nix {
+    inherit (inputs) catppuccin;
+    inherit pkgs;
+  };
   security.sudo.wheelNeedsPassword = false;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
