@@ -15,6 +15,7 @@
     # Include the results of the hardware scan.
     ./iapetus-hardware.nix
     ./common.nix
+    ./tailscale.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
